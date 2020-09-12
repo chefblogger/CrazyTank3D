@@ -14,8 +14,8 @@ public class KeepScore : MonoBehaviour
         
 
         if (Score >= 120){
-            
-            Application.LoadLevel("Scene01");
+            //Debug.Log = ("Gewonnen");
+            //Application.LoadLevel("Scene01");
         }
     }
 
