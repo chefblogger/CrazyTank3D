@@ -8,7 +8,17 @@ public class Distance : MonoBehaviour
     public GameObject player;
     public GameObject feind;
 
+
+
     public float entfernung;
+
+    private float aktiv = 0;
+
+
+    public float AlarmRadius = 100f;
+
+    
+    
 
     //public AudioSource alarmsound;
 
@@ -23,10 +33,37 @@ public class Distance : MonoBehaviour
     {
         entfernung = Vector3.Distance(player.transform.position, feind.transform.position);
 
-        if (entfernung < 50){
+        if (entfernung < AlarmRadius){
             //alarmsound.Play();
-            gameObject.renderer.material.color = Color.red;
-            Debug.Log("ALARM");
+            //gameObject.renderer.material.color = Color.red;
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+            Invoke("RaketeStart", 5); // 5 sek verzögerung
+              }
+
+
+
+        if (entfernung > AlarmRadius) {
+            
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.yellow;
         }
     }
+
+    public void RaketeStart(){
+            if (aktiv == 1)
+                {
+                Debug.Log("Rakete abgeschossen");
+                aktiv += 2;
+                
+                }
+                else if ( aktiv == 0){
+                    aktiv  += 1;
+                }
+                
+                
+            }
+                
+    
+
+
 }

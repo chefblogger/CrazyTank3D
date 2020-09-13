@@ -5,7 +5,13 @@ using UnityEngine;
 public class Enemy_AI : MonoBehaviour
 {
 Transform tr_Player;
- float f_RotSpeed=3.0f,f_MoveSpeed = 10.0f;
+
+public GameObject player;
+public GameObject feind;
+public float entfernung;
+
+
+ float f_RotSpeed=50.0f,f_MoveSpeed = 10.0f;
 
  // Use this for initialization
  void Start () {
@@ -23,5 +29,21 @@ Transform tr_Player;
 
   /* Move at Player*/
   transform.position += transform.forward * f_MoveSpeed * Time.deltaTime;
+
+  entfernung = Vector3.Distance(player.transform.position, feind.transform.position);
+
+  if ( entfernung <= 5)
+  {
+      Debug.Log("++++++++++++++++++BUUUUMMMMM++++++++++++++++++");
+      
+      
+      
+  }
+
  }
+
+
+
+
+
 }
